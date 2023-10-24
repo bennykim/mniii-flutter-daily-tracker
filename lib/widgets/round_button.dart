@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
+class RoundButton extends StatelessWidget {
   final String text;
   final Color bgColor;
   final Color textColor;
 
-  const Button(
+  const RoundButton(
       {super.key,
       required this.text,
       required this.bgColor,
