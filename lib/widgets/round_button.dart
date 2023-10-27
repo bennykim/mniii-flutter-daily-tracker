@@ -4,33 +4,38 @@ class RoundButton extends StatelessWidget {
   final String text;
   final Color bgColor;
   final Color textColor;
+  final VoidCallback? onClick;
 
   const RoundButton(
       {super.key,
       required this.text,
       required this.bgColor,
-      required this.textColor});
+      required this.textColor,
+      this.onClick});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(
-            45,
-          )),
+    return TextButton(
+      onPressed: onClick,
+      style: TextButton.styleFrom(
+        backgroundColor: bgColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(45),
+        ),
+      ),
       child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 50,
+        padding: const EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 50,
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 20,
           ),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 20,
-            ),
-          )),
+        ),
+      ),
     );
   }
 }
