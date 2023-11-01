@@ -10,13 +10,25 @@ class HomeTimer extends StatefulWidget {
 }
 
 class _HomeTimerState extends State<HomeTimer> {
-  int totalSeconds = 1500;
+  static const tenMinutes = 600;
+  int totalSeconds = tenMinutes;
+  int totalAttempts = 0;
+  bool isRunning = false;
   late Timer timer;
 
   void onTick(Timer timer) {
-    setState(() {
-      totalSeconds -= 1;
-    });
+    if (totalSeconds == 0) {
+      setState(() {
+        totalAttempts += 1;
+        isRunning = false;
+        totalSeconds = tenMinutes;
+      });
+      timer.cancel();
+    } else {
+      setState(() {
+        totalSeconds -= 1;
+      });
+    }
   }
 
   void onStartedPressed() {
@@ -24,6 +36,29 @@ class _HomeTimerState extends State<HomeTimer> {
       const Duration(seconds: 1),
       onTick,
     );
+    setState(() {
+      isRunning = true;
+    });
+  }
+
+  void onPausePressed() {
+    setState(() {
+      isRunning = false;
+    });
+    timer.cancel();
+  }
+
+  void onReset() {
+    setState(() {
+      isRunning = false;
+      totalSeconds = tenMinutes;
+    });
+    timer.cancel();
+  }
+
+  String format(int seconds) {
+    var duration = Duration(seconds: seconds);
+    return duration.toString().split('.').first.substring(2, 7);
   }
 
   @override
@@ -37,7 +72,7 @@ class _HomeTimerState extends State<HomeTimer> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '$totalSeconds',
+                format(totalSeconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
@@ -48,13 +83,30 @@ class _HomeTimerState extends State<HomeTimer> {
           ),
           Flexible(
             flex: 2,
-            child: Center(
-              child: IconButton(
-                onPressed: onStartedPressed,
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                icon: const Icon(Icons.play_circle_outline),
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: IconButton(
+                    onPressed: isRunning ? onPausePressed : onStartedPressed,
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor,
+                    icon: Icon(isRunning
+                        ? Icons.pause_circle_outline
+                        : Icons.play_circle_outline),
+                  ),
+                ),
+                Center(
+                  child: isRunning || totalSeconds != tenMinutes
+                      ? IconButton(
+                          onPressed: onReset,
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          icon: const Icon(Icons.refresh),
+                        )
+                      : Container(),
+                ),
+              ],
             ),
           ),
           Flexible(
@@ -71,7 +123,7 @@ class _HomeTimerState extends State<HomeTimer> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Recording',
+                          'Total Attempts',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
@@ -80,7 +132,7 @@ class _HomeTimerState extends State<HomeTimer> {
                           ),
                         ),
                         Text(
-                          '0',
+                          '$totalAttempts',
                           style: TextStyle(
                             fontSize: 58,
                             fontWeight: FontWeight.w600,
