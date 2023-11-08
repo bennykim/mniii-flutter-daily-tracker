@@ -13,22 +13,13 @@ Building a Flutter app to track and manage daily sessions and attendance.
 
 1. Make sure you have Flutter SDK and Dart installed.
 
-2. Clone the repository:
+2. Navigate to the project directory and install dependencies:
 
 ```
-git clone https://github.com/your-github-username/mniii-flutter-daily-tracker.git
-```
-
-3. Navigate to the project directory and install dependencies:
-
-```
-cd mniii-flutter-daily-tracker
-
 flutter pub get
 ```
 
-
-4. Run the app:
+2. Run the app:
 
 ```
 flutter run
