@@ -19,7 +19,7 @@ Building a Flutter app to track and manage daily sessions and attendance.
 flutter pub get
 ```
 
-2. Run the app:
+3. Run the app:
 
 ```
 flutter run
