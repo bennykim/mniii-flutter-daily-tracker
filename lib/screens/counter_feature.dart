@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/round_button.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/nested_icon_box.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/round_button_widget.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nested_icon_box_widget.dart';
 
-class HomeCounter extends StatefulWidget {
-  const HomeCounter({super.key});
+class CounterFeature extends StatefulWidget {
+  const CounterFeature({super.key});
 
   @override
-  State<HomeCounter> createState() => _HomeCounterState();
+  State<CounterFeature> createState() => _CounterFeatureState();
 }
 
-class _HomeCounterState extends State<HomeCounter> {
+class _CounterFeatureState extends State<CounterFeature> {
   int total = 50000;
 
   void increasePrice() {
@@ -74,7 +74,7 @@ class _WalletIconBoxes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const NestedIconBox(
+        const NestedIconBoxWidget(
           name: 'Euro',
           code: 'EUR',
           amount: '6 428',
@@ -83,7 +83,7 @@ class _WalletIconBoxes extends StatelessWidget {
         ),
         Transform.translate(
           offset: const Offset(0, -20),
-          child: const NestedIconBox(
+          child: const NestedIconBoxWidget(
             name: 'BitConin',
             code: 'BTC',
             amount: '9 785',
@@ -93,7 +93,7 @@ class _WalletIconBoxes extends StatelessWidget {
         ),
         Transform.translate(
           offset: const Offset(0, -40),
-          child: const NestedIconBox(
+          child: const NestedIconBoxWidget(
             name: 'Dollar',
             code: 'USD',
             amount: '428',
@@ -147,13 +147,13 @@ class _PriceControlButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        RoundButton(
+        RoundButtonWidget(
           text: 'Decrease',
           bgColor: const Color(0xFFF1B33B),
           textColor: Colors.black,
           onClick: onDecrease,
         ),
-        RoundButton(
+        RoundButtonWidget(
           text: 'Increase',
           bgColor: const Color(0xFF1F2123),
           textColor: Colors.white,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NestedIconBox extends StatelessWidget {
+class NestedIconBoxWidget extends StatelessWidget {
   final String name, code, amount;
   final IconData icon;
   final bool isInverted;
 
   final blackColor = const Color(0xFF1F2123);
 
-  const NestedIconBox({
+  const NestedIconBoxWidget({
     super.key,
     required this.name,
     required this.code,

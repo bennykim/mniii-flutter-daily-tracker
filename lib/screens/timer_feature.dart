@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class HomeTimer extends StatefulWidget {
-  const HomeTimer({super.key});
+class TimerFeature extends StatefulWidget {
+  const TimerFeature({super.key});
 
   @override
-  State<HomeTimer> createState() => _HomeTimerState();
+  State<TimerFeature> createState() => _TimerFeatureState();
 }
 
-class _HomeTimerState extends State<HomeTimer> {
+class _TimerFeatureState extends State<TimerFeature> {
   static const tenMinutes = 600;
   int totalSeconds = tenMinutes;
   int totalAttempts = 0;

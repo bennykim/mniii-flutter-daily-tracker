@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/screens/detail_screen.dart';
 
-class NBATeamCard extends StatelessWidget {
+class NBATeamCardWidget extends StatelessWidget {
   final int id;
   final String name, logo;
 
-  const NBATeamCard({
+  const NBATeamCardWidget({
     super.key,
     required this.id,
     required this.name,
