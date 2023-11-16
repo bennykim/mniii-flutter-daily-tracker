@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/models/nba_model.dart';
 import 'package:mniii_flutter_daily_tracker/services/api_service.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nba_team_card.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -53,34 +54,8 @@ class HomeScreen extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         var nbaTeam = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
-              width: 150,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    15,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 15,
-                        offset: const Offset(0, 0),
-                        color: Colors.black.withOpacity(0.1))
-                  ]),
-              child: Image.network(nbaTeam.logo),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Text(
-              nbaTeam.name,
-              style: const TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ],
-        );
+        return NBATeamCard(
+            id: nbaTeam.id, name: nbaTeam.name, logo: nbaTeam.logo);
       },
       separatorBuilder: (context, index) {
         return const SizedBox(
