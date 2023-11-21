@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba_team_model.dart';
 import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
 import 'package:mniii_flutter_daily_tracker/widgets/nba_team_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final Future<List<NBAModel>> nbaTeams = ApiService.fetchNBATeams();
+  final Future<List<NBATeamModel>> nbaTeams = ApiService.fetchNBATeams();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  ListView makeList(AsyncSnapshot<List<NBAModel>> snapshot) {
+  ListView makeList(AsyncSnapshot<List<NBATeamModel>> snapshot) {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: snapshot.data!.length,

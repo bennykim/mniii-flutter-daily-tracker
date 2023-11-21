@@ -1,15 +1,15 @@
-class NBAModel {
+class NBATeamModel {
   final int id;
   final String name, logo;
 
-  NBAModel({
+  NBATeamModel({
     required this.id,
     required this.name,
     this.logo = '',
   });
 
-  factory NBAModel.fromJson(Map<String, dynamic> json) {
-    return NBAModel(
+  factory NBATeamModel.fromJson(Map<String, dynamic> json) {
+    return NBATeamModel(
       id: json['id'],
       name: json['name'],
       logo: json['logo'] ?? '',
