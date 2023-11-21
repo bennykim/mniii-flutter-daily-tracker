@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/models/nba_model.dart';
-import 'package:mniii_flutter_daily_tracker/services/api_service.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/nba_team_card.dart';
+import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nba_team_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         var nbaTeam = snapshot.data![index];
-        return NBATeamCard(
+        return NBATeamCardWidget(
             id: nbaTeam.id, name: nbaTeam.name, logo: nbaTeam.logo);
       },
       separatorBuilder: (context, index) {
