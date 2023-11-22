@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/models/nba_player_model.dart';
 import 'package:mniii_flutter_daily_tracker/models/nba_team_detail_model.dart';
 import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nba_player_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final int id;
@@ -27,8 +28,6 @@ class _DetailScreenState extends State<DetailScreen> {
     super.initState();
     nbaTeam = ApiService.fetchTeamById(widget.id);
     nbaPlayers = ApiService.fetchPlayersByTeamId(widget.id);
-    print(nbaTeam);
-    print(nbaPlayers);
   }
 
   Widget build(BuildContext context) {
@@ -113,41 +112,23 @@ class _DetailScreenState extends State<DetailScreen> {
                 future: nbaPlayers,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Column(
-                      children: [
-                        for (var player in snapshot.data!)
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.green.shade300,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 10,
-                                horizontal: 20,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '${player.firstname}, ${player.lastname}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  const Icon(
-                                    Icons.chevron_right_rounded,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                      ],
-                    );
+                    return FutureBuilder(
+                        future: nbaTeam,
+                        builder: (context,
+                            AsyncSnapshot<NBATeamDetailModel> teamSnapshot) {
+                          if (teamSnapshot.hasData) {
+                            return Column(
+                              children: [
+                                for (var player in snapshot.data!)
+                                  Player(
+                                    player: player,
+                                    teamName: teamSnapshot.data!.nickname,
+                                  )
+                              ],
+                            );
+                          }
+                          return Container(); // 팀 정보 로딩 중일 때 표시할 위젯
+                        });
                   }
                   return Container();
                 },
