@@ -3,6 +3,7 @@ import 'package:mniii_flutter_daily_tracker/models/nba_player_model.dart';
 import 'package:mniii_flutter_daily_tracker/models/nba_team_detail_model.dart';
 import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
 import 'package:mniii_flutter_daily_tracker/widgets/nba_player_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatefulWidget {
   final int id;
@@ -20,16 +21,44 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  static const String likedTeamsKey = 'likedTeams';
   late Future<NBATeamDetailModel> nbaTeam;
   late Future<List<NBAPlayerModel>> nbaPlayers;
+  late SharedPreferences pref;
+  bool isLiked = false;
+  late String teamIdString;
 
   @override
   void initState() {
     super.initState();
     nbaTeam = ApiService.fetchTeamById(widget.id);
     nbaPlayers = ApiService.fetchPlayersByTeamId(widget.id);
+    teamIdString = widget.id.toString();
+    initializePreferences();
   }
 
+  Future<void> initializePreferences() async {
+    pref = await SharedPreferences.getInstance();
+    await checkIfTeamLiked();
+  }
+
+  Future<void> checkIfTeamLiked() async {
+    final likedTeams = pref.getStringList(likedTeamsKey) ?? [];
+    setState(() {
+      isLiked = likedTeams.contains(teamIdString);
+    });
+  }
+
+  Future<void> toggleFavorite() async {
+    final likedTeams = pref.getStringList(likedTeamsKey) ?? [];
+    isLiked ? likedTeams.remove(teamIdString) : likedTeams.add(teamIdString);
+    await pref.setStringList(likedTeamsKey, likedTeams);
+    setState(() {
+      isLiked = !isLiked;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -37,6 +66,12 @@ class _DetailScreenState extends State<DetailScreen> {
         elevation: 2,
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
+        actions: [
+          IconButton(
+            onPressed: toggleFavorite,
+            icon: Icon(isLiked ? Icons.favorite : Icons.favorite_outline),
+          ),
+        ],
         title: Text(
           widget.name,
           style: const TextStyle(
@@ -55,7 +90,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Hero(
-                    tag: widget.id,
+                    tag: teamIdString,
                     child: Container(
                       width: 150,
                       clipBehavior: Clip.hardEdge,

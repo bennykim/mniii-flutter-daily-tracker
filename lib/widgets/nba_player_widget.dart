@@ -13,7 +13,7 @@ class Player extends StatelessWidget {
   final NBAPlayerModel player;
 
   onButtonTap() async {
-    await launchUrlString('https://nba.com/${teamName}');
+    await launchUrlString('https://nba.com/$teamName');
   }
 
   @override

@@ -23,7 +23,7 @@ class App extends StatelessWidget {
             color: Color(0xFF232B55),
           ),
         ),
-        cardColor: const Color(0xFFF4EDDB),
+        cardColor: const Color.fromARGB(255, 68, 50, 5),
       ),
       home: HomeScreen(),
     );
