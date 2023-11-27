@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mniii_flutter_daily_tracker/screens/home_screen.dart';
+import 'package:mniii_flutter_daily_tracker/screens/question_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
         ),
         cardColor: const Color.fromARGB(255, 68, 50, 5),
       ),
-      home: HomeScreen(),
+      home: QuizScreen(),
     );
   }
 }
