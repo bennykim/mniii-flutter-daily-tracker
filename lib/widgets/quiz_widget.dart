@@ -6,39 +6,43 @@ class QuizWidget extends StatefulWidget {
   const QuizWidget({super.key});
 
   @override
-  State<QuizWidget> createState() => _QuizWidgetState();
+  State<QuizWidget> createState() {
+    return _QuizState();
+  }
 }
 
-class _QuizWidgetState extends State<QuizWidget> {
-  Widget? activeScreen;
-
-  @override
-  void initState() {
-    activeScreen = StartScreen(switchScreen);
-    super.initState();
-  }
+class _QuizState extends State<QuizWidget> {
+  var activeScreen = 'start-screen';
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 78, 13, 151),
-              Color.fromARGB(255, 107, 15, 168),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+  Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      screenWidget = const QuestionScreen();
+    }
+
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 78, 13, 151),
+                Color.fromARGB(255, 107, 15, 168),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
+          child: screenWidget,
         ),
-        child: activeScreen,
       ),
     );
   }
