@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/data/questions.dart';
 import 'package:mniii_flutter_daily_tracker/screens/quiz/questions_screen.dart';
 import 'package:mniii_flutter_daily_tracker/screens/quiz/start_screen.dart';
+import 'package:mniii_flutter_daily_tracker/screens/quiz/results_screen.dart';
 
 class QuizWidget extends StatefulWidget {
   const QuizWidget({super.key});
@@ -27,8 +28,7 @@ class _QuizState extends State<QuizWidget> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
-        activeScreen = 'start-screen';
+        activeScreen = 'results-screen';
       });
     }
   }
@@ -40,6 +40,12 @@ class _QuizState extends State<QuizWidget> {
     if (activeScreen == 'questions-screen') {
       screenWidget = QuestionScreen(
         onSelectAnswer: chooseAnswer,
+      );
+    }
+
+    if (activeScreen == 'results-screen') {
+      screenWidget = ResultsScreen(
+        chosenAnswers: selectedAnswers,
       );
     }
 
