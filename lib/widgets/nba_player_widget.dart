@@ -4,10 +4,10 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class Player extends StatelessWidget {
   const Player({
-    Key? key,
+    super.key,
     required this.player,
     required this.teamName,
-  }) : super(key: key);
+  });
 
   final String teamName;
   final NBAPlayerModel player;

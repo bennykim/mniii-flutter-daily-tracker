@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mniii_flutter_daily_tracker/data/questions.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/questions_summary.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/questions/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
+  final void Function() onRestart;
   final List<String> chosenAnswers;
 
   const ResultsScreen({
     super.key,
     required this.chosenAnswers,
+    required this.onRestart,
   });
 
   List<Map<String, Object>> getSummaryData() {
@@ -39,11 +42,23 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-                'You answered $numCorrectAnswers out of $numTotalQuestions questions...'),
+              'You answered $numCorrectAnswers out of $numTotalQuestions questions...',
+              style: GoogleFonts.roboto(
+                color: const Color.fromARGB(255, 230, 200, 253),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 30),
             QuestionsSummary(getSummaryData()),
             const SizedBox(height: 30),
-            TextButton(onPressed: () {}, child: const Text('Restart Quiz'))
+            TextButton.icon(
+              onPressed: onRestart,
+              style: TextButton.styleFrom(foregroundColor: Colors.white),
+              icon: const Icon(Icons.refresh),
+              label: const Text('Restart Quiz'),
+            )
           ],
         ),
       ),
