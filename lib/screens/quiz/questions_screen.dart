@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:mniii_flutter_daily_tracker/widgets/answer_button.dart';
-import 'package:mniii_flutter_daily_tracker/data/questions.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/quiz/answer_button.dart';
+import 'package:mniii_flutter_daily_tracker/data/quiz/questions.dart';
 
 class QuestionScreen extends StatefulWidget {
   final void Function(String answer) onSelectAnswer;

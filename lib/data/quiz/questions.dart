@@ -1,4 +1,4 @@
-import 'package:mniii_flutter_daily_tracker/models/quiz_questions.dart';
+import 'package:mniii_flutter_daily_tracker/models/quiz/quiz_questions.dart';
 
 const questions = [
   QuizQuestion(

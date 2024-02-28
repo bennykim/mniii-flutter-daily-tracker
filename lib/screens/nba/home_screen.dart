@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_team_model.dart';
-import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/nba_team_card_widget.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_team_model.dart';
+import 'package:mniii_flutter_daily_tracker/services/nba/nba_api_service.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nba/nba_team_card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});

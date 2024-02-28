@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/data/questions.dart';
+import 'package:mniii_flutter_daily_tracker/data/quiz/questions.dart';
 import 'package:mniii_flutter_daily_tracker/screens/quiz/questions_screen.dart';
 import 'package:mniii_flutter_daily_tracker/screens/quiz/start_screen.dart';
 import 'package:mniii_flutter_daily_tracker/screens/quiz/results_screen.dart';

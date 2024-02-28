@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_player_model.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_team_detail_model.dart';
-import 'package:mniii_flutter_daily_tracker/services/nba_api_service.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/nba_player_widget.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_player_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_team_detail_model.dart';
+import 'package:mniii_flutter_daily_tracker/services/nba/nba_api_service.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/nba/nba_player_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/quiz_widget.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/quiz/quiz_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

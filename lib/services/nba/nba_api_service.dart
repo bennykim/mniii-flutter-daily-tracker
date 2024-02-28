@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import 'package:mniii_flutter_daily_tracker/models/nba_player_model.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_team_detail_model.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_team_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_player_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_team_detail_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_team_model.dart';
 
 class ApiService {
   static String get apiKey => dotenv.env['API_KEY'] ?? '';

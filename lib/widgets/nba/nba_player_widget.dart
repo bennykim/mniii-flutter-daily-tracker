@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/models/nba_player_model.dart';
+import 'package:mniii_flutter_daily_tracker/models/nba/nba_player_model.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Player extends StatelessWidget {

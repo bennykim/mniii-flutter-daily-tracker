@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mniii_flutter_daily_tracker/data/questions.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/questions/questions_summary.dart';
+import 'package:mniii_flutter_daily_tracker/data/quiz/questions.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/quiz/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   final void Function() onRestart;

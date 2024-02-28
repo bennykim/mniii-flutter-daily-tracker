@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/round_button_widget.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/nested_icon_box_widget.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/scope/round_button_widget.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/scope/nested_icon_box_widget.dart';
 
 class CounterFeature extends StatefulWidget {
   const CounterFeature({super.key});

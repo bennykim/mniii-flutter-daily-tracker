@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/screens/detail_screen.dart';
+import 'package:mniii_flutter_daily_tracker/screens/nba/detail_screen.dart';
 
 class NBATeamCardWidget extends StatelessWidget {
   final int id;

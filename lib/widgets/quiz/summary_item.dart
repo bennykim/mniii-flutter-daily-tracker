@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/questions/question_identifier.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/quiz/question_identifier.dart';
 
 class SummaryItem extends StatelessWidget {
   final Map<String, Object> itemData;

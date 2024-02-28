@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mniii_flutter_daily_tracker/widgets/questions/summary_item.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/quiz/summary_item.dart';
 
 class QuestionsSummary extends StatelessWidget {
   final List<Map<String, Object>> summaryData;
