@@ -4,10 +4,38 @@ import 'package:mniii_flutter_daily_tracker/widgets/cost/expenses.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:mniii_flutter_daily_tracker/widgets/quiz/quiz_widget.dart';
 
+var kColorSchema = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 96, 59, 181),
+);
+
 void main() {
   runApp(
-    const MaterialApp(
-      home: Expenses(),
+    MaterialApp(
+      theme: ThemeData().copyWith(
+        useMaterial3: true,
+        colorScheme: kColorSchema,
+        appBarTheme: AppBarTheme(
+          backgroundColor: kColorSchema.onPrimaryContainer,
+          foregroundColor: kColorSchema.primaryContainer,
+        ),
+        cardTheme: const CardTheme().copyWith(
+          color: kColorSchema.primaryContainer,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kColorSchema.primaryContainer,
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+              titleLarge: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kColorSchema.onSecondaryContainer,
+                fontSize: 16,
+              ),
+            ),
+      ),
+      home: const Expenses(),
     ),
   );
 } 

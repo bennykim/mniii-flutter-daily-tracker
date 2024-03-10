@@ -126,6 +126,7 @@ class _NewExpenseState extends State<NewExpense> {
           ),
           const SizedBox(height: 16),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               DropdownButton(
                   value: _selectedCategory,
