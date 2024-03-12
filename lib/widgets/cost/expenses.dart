@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mniii_flutter_daily_tracker/models/cost/expense.dart';
+import 'package:mniii_flutter_daily_tracker/widgets/cost/chart/chart.dart';
 import 'package:mniii_flutter_daily_tracker/widgets/cost/expenses_list.dart';
 import 'package:mniii_flutter_daily_tracker/widgets/cost/new_expense.dart';
 
@@ -91,7 +92,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('Expenses'),
+          Chart(expenses: _registeredExpenses),
           Expanded(
             child: mainContent,
           )
